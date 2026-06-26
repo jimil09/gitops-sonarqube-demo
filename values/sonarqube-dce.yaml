@@ -28,6 +28,8 @@ applicationNodes:
     podMonitor:
       enabled: false
 
+applicationNodes:
+  replicaCount: 3
 searchNodes:
   replicaCount: 3
 
