@@ -21,7 +21,7 @@ applicationNodes:
       done
       echo "DNS ready."
 
-  jwtSecret: "hW+y4kiwHQJRRarQk+w0095ljMhYqPWOB6hTrlcZ3ea2N8bLxdzrUhHZHu9bhRVVpR1hAv8W4YhDgBycvWlxQA=="
+  jwtSecret: "hW+y4kiwHQJRRarQk+w0095ljMhYqPWOB6hTrlcZ3ea2N8bLxdzrUhHZHu9bhRVVpR1hAv8W4YhDgBycvWlxQA==" # pragma: allowlist secret
 
   prometheusMonitoring:
     podMonitor:
