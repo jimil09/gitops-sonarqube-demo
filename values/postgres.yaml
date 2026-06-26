@@ -1,0 +1,10 @@
+auth:
+  username: sonar
+  database: sonar
+  existingSecret: sonarqube-db-secret
+  secretKeys:
+    userPasswordKey: password
+
+primary:
+  persistence:
+    size: 8Gi

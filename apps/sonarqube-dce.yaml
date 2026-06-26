@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: sonarqube-dce
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.io
+spec:
+  project: default
+  sources:
+  - repoURL: https://SonarSource.github.io/helm-chart-sonarqube
+    chart: sonarqube-dce
+    targetRevision: "2026.4.0"
+    helm:
+      valueFiles:
+      - $values/values/sonarqube-dce.yaml
+  - repoURL: https://github.com/jimil09/gitops-sonarqube-demo
+    targetRevision: HEAD
+    ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: sonarqube-dce
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
