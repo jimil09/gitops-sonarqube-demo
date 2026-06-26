@@ -12,6 +12,7 @@ spec:
     chart: sonarqube-dce
     targetRevision: "2026.3.1"
     helm:
+      releaseName: sonarqube
       valueFiles:
       - $values/values/sonarqube-dce.yaml
   - repoURL: https://github.com/jimil09/gitops-sonarqube-demo
