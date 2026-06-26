@@ -1,0 +1,35 @@
+---
+# Source: sonarqube-dce/templates/pod-disruption-budget.yaml
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: sonarqube-sonarqube-dce-search
+  labels:
+    app: sonarqube-dce
+    chart: sonarqube-dce-2026.3.1
+    release: sonarqube
+    heritage: Helm
+spec:
+  minAvailable: 2
+
+  selector:
+    matchLabels:
+      sonarqube.datacenter/type: "search"
+---
+# Source: sonarqube-dce/templates/pod-disruption-budget.yaml
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: sonarqube-sonarqube-dce-app
+  labels:
+    app: sonarqube-dce
+    chart: sonarqube-dce-2026.3.1
+    release: sonarqube
+    heritage: Helm
+spec:
+  minAvailable: 1
+
+  selector:
+    matchLabels:
+      sonarqube.datacenter/type: "app"
+

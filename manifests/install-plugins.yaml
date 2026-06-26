@@ -1,0 +1,14 @@
+---
+# Source: sonarqube-dce/templates/install-plugins.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sonarqube-sonarqube-dce-install-plugins
+  labels:
+    app: sonarqube-dce
+    chart: sonarqube-dce-2026.3.1
+    release: sonarqube
+    heritage: Helm
+data:
+  install_plugins.sh: |-
+

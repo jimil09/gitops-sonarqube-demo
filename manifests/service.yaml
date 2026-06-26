@@ -1,0 +1,101 @@
+---
+# Source: sonarqube-dce/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: sonarqube-sonarqube-dce
+  labels:
+    app: sonarqube-dce
+    chart: sonarqube-dce-2026.3.1
+    release: sonarqube
+    heritage: Helm
+
+spec:
+  type: ClusterIP
+  ports:
+    - port: 9000
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app: sonarqube-dce
+    release: sonarqube
+---
+# Source: sonarqube-dce/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: sonarqube-sonarqube-dce-headless
+  labels:
+    app: sonarqube-dce
+    chart: sonarqube-dce-2026.3.1
+    release: sonarqube
+    heritage: Helm
+
+spec:
+  type: ClusterIP
+  clusterIP: None
+  publishNotReadyAddresses: true
+  ports:
+    - port: 9003
+      targetPort: hazelcast
+      protocol: TCP
+      appProtocol: tcp
+      name: hazelcast
+  selector:
+    app: sonarqube-dce
+    release: sonarqube
+---
+# Source: sonarqube-dce/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: sonarqube-sonarqube-dce-search
+  labels:
+    app: sonarqube-dce
+    chart: sonarqube-dce-2026.3.1
+    release: sonarqube
+    heritage: Helm
+
+spec:
+  type: ClusterIP
+  ports:
+    - port: 9001
+      targetPort: search-port
+      protocol: TCP
+      name: search
+    - port: 9002
+      targetPort: es-port
+      protocol: TCP
+      name: es
+  selector:
+    app: sonarqube-dce-search
+    release: sonarqube
+---
+# Source: sonarqube-dce/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: sonarqube-sonarqube-dce-search-headless
+  labels:
+    app: sonarqube-dce
+    chart: sonarqube-dce-2026.3.1
+    release: sonarqube
+    heritage: Helm
+
+spec:
+  clusterIP: None
+  publishNotReadyAddresses: true
+  ports:
+    - port: 9001
+      targetPort: search-port
+      protocol: TCP
+      name: search
+    - port: 9002
+      targetPort: es-port
+      protocol: TCP
+      name: es
+  selector:
+    app: sonarqube-dce-search
+    release: sonarqube
+
