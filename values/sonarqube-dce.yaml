@@ -19,7 +19,8 @@ applicationNodes:
         echo "Not yet, retrying in 3s..."
         sleep 3
       done
-      echo "DNS ready."
+      echo "DNS ready. Sleeping 5s to ensure propagation..."
+      sleep 5
 
   jwtSecret: "hW+y4kiwHQJRRarQk+w0095ljMhYqPWOB6hTrlcZ3ea2N8bLxdzrUhHZHu9bhRVVpR1hAv8W4YhDgBycvWlxQA==" # pragma: allowlist secret
 
