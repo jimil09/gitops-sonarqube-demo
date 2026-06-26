@@ -1,5 +1,5 @@
 applicationNodes:
-  replicaCount: 2
+  replicaCount: 3
 
   # Fix: wait for headless service DNS before SonarQube starts.
   # sonar.cluster.hosts resolves at startup via InetAddress.getByName(); if
@@ -28,8 +28,6 @@ applicationNodes:
     podMonitor:
       enabled: false
 
-applicationNodes:
-  replicaCount: 3
 searchNodes:
   replicaCount: 3
 
